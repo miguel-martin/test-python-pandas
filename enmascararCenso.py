@@ -34,7 +34,7 @@ censo_mod["nombre_repetido"] = nombres_iguales
 print("\n\nCENSO ENCONTRANDO NOMBRES Y APELLIDOS REPETIDOS")
 print(censo_mod)
 
-# si el valor de la columna "nombre_repetido" es False enmascare el id
+# si el valor de la columna "nombre_repetido" es False 
 # modifica el campo "id" para que contenga el valor ""
 censo_mod.loc[censo_mod["nombre_repetido"] == False, "id"] = ""
 
@@ -43,12 +43,22 @@ def enmascararID(x):
     v = validaciones.Validaciones()
     if v.isDNI(x):
         return v.enmascararDNI(x)
+    elif v.isNIE(x):
+        return v.enmascararNIE(x)
+    elif v.isPasaporte(x):
+        return v.enmascararPasaporte(x)
     else:
         return "*********"  
 
 # si el valor de la columna "nombre_repetido" es True,
 # actualiza el campo "id" con el resultado de aplicar a cada fila la funcion enmascararID
 censo_mod.loc[censo_mod["nombre_repetido"] == True, "id"] = censo_mod["id"].apply(enmascararID)
+
+# ToDo
+# falta comprobar si después de aplicar la mascara al campo id, siguen quedando repeticiones
+
+
+# elige los campos a mostrar y muestra el censo enmascarando lo que procede
 mostrar = censo_mod[["id","nombre","apellido1","apellido2"]]
 print("\n\nVALORES A MOSTRAR PUBLICAMENTE")
 print(mostrar)
