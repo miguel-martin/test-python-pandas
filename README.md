@@ -14,7 +14,7 @@ Prueba que:
 - Muestra solo algunos campos del DataFrame
 
 # Regulación
-* Las instrucciones para publicar actos con una pluralidad de interesados están en [https://ae.unizar.es/?app=touz&opcion=down&id=63035](La instruccion SG2/2019) y dicen:
+* Las instrucciones para publicar actos con una pluralidad de interesados están en [La instrucción SG 2/2019](https://ae.unizar.es/?app=touz&opcion=down&id=63035) y dicen:
     * _Cuando existan dos o más personas con mismos nombres y apellidos, se añadirán al nombre y apellidos 4 cifras numéricas aleatorias del documento de identidad_
         * _Los caracteres alfabéticos se sustituirán por un asterisco en cada posición_
         * _Si se trata de un DNI (formato 12345678X) se publicarán los digitos que ocupen posiciones cuarta, quinta, sexta y séptima, p ej ***4567**_
