@@ -1,4 +1,6 @@
 import pandas as pd
+import validaciones
+
 
 # leer el fichero
 censo = pd.read_csv("censo.csv")
@@ -36,16 +38,17 @@ print(censo_mod)
 # modifica el campo "id" para que contenga el valor ""
 censo_mod.loc[censo_mod["nombre_repetido"] == False, "id"] = ""
 
-# defino la funcion que enmascara un id
-def enmascarar_id(x):
-    #devolver las posiciones 4,5,6,7 de la cadena
-    # p ej mask_id("250123456Q") devuelve ***1234***
-    #      
-    return "***" + x[3:6] + "***"  
+# enmascarar un id
+def enmascararID(x):
+    v = validaciones.Validaciones()
+    if v.isDNI(x):
+        return v.enmascararDNI(x)
+    else:
+        return "*********"  
 
 # si el valor de la columna "nombre_repetido" es True,
-# actualiza el campo "id" con el resultado de aplicar a cada fila la funcion enmascarar_id
-censo_mod.loc[censo_mod["nombre_repetido"] == True, "id"] = censo_mod["id"].apply(enmascarar_id)
+# actualiza el campo "id" con el resultado de aplicar a cada fila la funcion enmascararID
+censo_mod.loc[censo_mod["nombre_repetido"] == True, "id"] = censo_mod["id"].apply(enmascararID)
 mostrar = censo_mod[["id","nombre","apellido1","apellido2"]]
 print("\n\nVALORES A MOSTRAR PUBLICAMENTE")
 print(mostrar)
